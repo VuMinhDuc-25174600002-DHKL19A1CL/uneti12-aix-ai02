@@ -1,0 +1,216 @@
+{
+  "task": "AI02",
+  "architecture": "mobilenet_v3_large",
+  "pretrained": true,
+  "experimental_mode": "REAL_DATA_CHECK_SOURCE",
+  "dataset_root": "data/dataset-resized",
+  "number_images_valid": 2521,
+  "number_exact_duplicates_removed": 0,
+  "number_invalid_removed": 3,
+  "split_source": "V4 split_manifest.csv (shared holdout)",
+  "split_counts": {
+    "train_fit": 1713,
+    "dev_internal": 303,
+    "val_final": 505
+  },
+  "seed": 2026,
+  "best_internal_dev_macro_f1": 0.8823904462262527,
+  "best_stage": "head",
+  "best_epoch": 5,
+  "temperature_fitted_on_internal_dev": 0.85,
+  "tta_selected_on_internal_dev": "hflip",
+  "dev_macro_f1_no_tta": 0.8823904462262527,
+  "dev_macro_f1_hflip_tta": 0.8852458226677675,
+  "final_val_accuracy": 0.8811881188118812,
+  "final_val_macro_f1": 0.8663235621925587,
+  "final_val_classification_report": {
+    "cardboard": {
+      "precision": 0.9090909090909091,
+      "recall": 0.8641975308641975,
+      "f1-score": 0.8860759493670886,
+      "support": 81.0
+    },
+    "glass": {
+      "precision": 0.8888888888888888,
+      "recall": 0.88,
+      "f1-score": 0.8844221105527639,
+      "support": 100.0
+    },
+    "metal": {
+      "precision": 0.9047619047619048,
+      "recall": 0.926829268292683,
+      "f1-score": 0.9156626506024096,
+      "support": 82.0
+    },
+    "paper": {
+      "precision": 0.8699186991869918,
+      "recall": 0.8991596638655462,
+      "f1-score": 0.8842975206611571,
+      "support": 119.0
+    },
+    "plastic": {
+      "precision": 0.9111111111111111,
+      "recall": 0.8541666666666666,
+      "f1-score": 0.8817204301075269,
+      "support": 96.0
+    },
+    "trash": {
+      "precision": 0.6875,
+      "recall": 0.8148148148148148,
+      "f1-score": 0.7457627118644068,
+      "support": 27.0
+    },
+    "accuracy": 0.8811881188118812,
+    "macro avg": {
+      "precision": 0.8618785855066343,
+      "recall": 0.873194657417318,
+      "f1-score": 0.8663235621925587,
+      "support": 505.0
+    },
+    "weighted avg": {
+      "precision": 0.8836935061101928,
+      "recall": 0.8811881188118812,
+      "f1-score": 0.8818036827183117,
+      "support": 505.0
+    }
+  },
+  "final_val_confusion_matrix": [
+    [
+      70,
+      0,
+      0,
+      8,
+      0,
+      3
+    ],
+    [
+      0,
+      88,
+      5,
+      0,
+      7,
+      0
+    ],
+    [
+      1,
+      2,
+      76,
+      2,
+      0,
+      1
+    ],
+    [
+      5,
+      1,
+      0,
+      107,
+      1,
+      5
+    ],
+    [
+      0,
+      8,
+      1,
+      4,
+      82,
+      1
+    ],
+    [
+      1,
+      0,
+      2,
+      2,
+      0,
+      22
+    ]
+  ],
+  "metal_as_glass": 2,
+  "glass_as_metal": 5,
+  "history": [
+    {
+      "phase": "head",
+      "epoch": 1,
+      "train_loss": 0.798009,
+      "dev_macro_f1": 0.837742
+    },
+    {
+      "phase": "head",
+      "epoch": 2,
+      "train_loss": 0.511114,
+      "dev_macro_f1": 0.825686
+    },
+    {
+      "phase": "head",
+      "epoch": 3,
+      "train_loss": 0.425698,
+      "dev_macro_f1": 0.840335
+    },
+    {
+      "phase": "head",
+      "epoch": 4,
+      "train_loss": 0.374698,
+      "dev_macro_f1": 0.829124
+    },
+    {
+      "phase": "head",
+      "epoch": 5,
+      "train_loss": 0.343453,
+      "dev_macro_f1": 0.88239
+    },
+    {
+      "phase": "head",
+      "epoch": 6,
+      "train_loss": 0.319573,
+      "dev_macro_f1": 0.843689
+    },
+    {
+      "phase": "head",
+      "epoch": 7,
+      "train_loss": 0.304948,
+      "dev_macro_f1": 0.870856
+    },
+    {
+      "phase": "head",
+      "epoch": 8,
+      "train_loss": 0.301074,
+      "dev_macro_f1": 0.870673
+    },
+    {
+      "phase": "head",
+      "epoch": 9,
+      "train_loss": 0.30006,
+      "dev_macro_f1": 0.873786
+    },
+    {
+      "phase": "fine_tune",
+      "epoch": 1,
+      "train_loss": 0.473438,
+      "dev_macro_f1": 0.857451
+    },
+    {
+      "phase": "fine_tune",
+      "epoch": 2,
+      "train_loss": 0.442119,
+      "dev_macro_f1": 0.858041
+    },
+    {
+      "phase": "fine_tune",
+      "epoch": 3,
+      "train_loss": 0.415149,
+      "dev_macro_f1": 0.85907
+    },
+    {
+      "phase": "fine_tune",
+      "epoch": 4,
+      "train_loss": 0.387114,
+      "dev_macro_f1": 0.868983
+    }
+  ],
+  "runtime_seconds": 312.9,
+  "notes": [
+    "Pretrained CNN. Select early stopping/temperature using INTERNAL-DEV only.",
+    "Final validation used exactly once for reporting.",
+    "If split_manifest.csv from V4 is absent, comparison with V4 is NOT paired.",
+    "Per-class performance and risk should be checked, not assumed improved."
+  ]
+}

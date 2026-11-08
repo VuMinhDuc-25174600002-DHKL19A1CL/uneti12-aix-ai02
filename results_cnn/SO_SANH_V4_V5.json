@@ -1,0 +1,61 @@
+{
+  "n_validation": 505,
+  "macro_f1": {
+    "baseline": 0.5483030068315935,
+    "svm_v4": 0.7206119283605,
+    "cnn_v5": 0.8663235621925587
+  },
+  "metal_glass_confusions": {
+    "baseline": {
+      "metal_pred_glass": 19,
+      "glass_pred_metal": 11
+    },
+    "svm_v4": {
+      "metal_pred_glass": 15,
+      "glass_pred_metal": 6
+    },
+    "cnn_v5": {
+      "metal_pred_glass": 2,
+      "glass_pred_metal": 5
+    }
+  },
+  "cnn_minus_baseline_macro_f1": 0.3180205553609652,
+  "paired_bootstrap_delta_ci95": [
+    0.26632564317322543,
+    0.3653832469603299
+  ],
+  "per_class_f1": {
+    "cardboard": {
+      "baseline": 0.573170731707317,
+      "svm_v4": 0.7904191616766467,
+      "cnn_v5": 0.8860759493670886
+    },
+    "glass": {
+      "baseline": 0.5326633165829145,
+      "svm_v4": 0.6733668341708543,
+      "cnn_v5": 0.8844221105527639
+    },
+    "metal": {
+      "baseline": 0.5061728395061729,
+      "svm_v4": 0.7019867549668874,
+      "cnn_v5": 0.9156626506024096
+    },
+    "paper": {
+      "baseline": 0.7125506072874493,
+      "svm_v4": 0.8346456692913385,
+      "cnn_v5": 0.8842975206611571
+    },
+    "plastic": {
+      "baseline": 0.5806451612903226,
+      "svm_v4": 0.7010309278350515,
+      "cnn_v5": 0.8817204301075269
+    },
+    "trash": {
+      "baseline": 0.38461538461538464,
+      "svm_v4": 0.6222222222222222,
+      "cnn_v5": 0.7457627118644068
+    }
+  },
+  "num_pairs_improved_vs_baseline": 14,
+  "warning": "F1 tăng/giảm cần dựa số liệu. Không chọn/tune V5 nhiều lần dựa validation."
+}

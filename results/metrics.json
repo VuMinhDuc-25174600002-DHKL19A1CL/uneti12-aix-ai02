@@ -1,0 +1,678 @@
+{
+  "task": "AI02",
+  "label_order": [
+    "cardboard",
+    "glass",
+    "metal",
+    "paper",
+    "plastic",
+    "trash"
+  ],
+  "dataset": {
+    "n_input": 2527,
+    "n_after_cleanup": 2521,
+    "by_class_original": {
+      "cardboard": 403,
+      "glass": 501,
+      "metal": 410,
+      "paper": 594,
+      "plastic": 482,
+      "trash": 137
+    },
+    "by_class_used": {
+      "cardboard": 403,
+      "glass": 498,
+      "metal": 409,
+      "paper": 594,
+      "plastic": 480,
+      "trash": 137
+    },
+    "n_invalid": 0,
+    "n_exact_duplicate_same_label": 0,
+    "n_conflicting_duplicate": 3,
+    "invalid": [],
+    "same_label_duplicates": [],
+    "label_conflicts": [
+      {
+        "path": "data\\dataset-resized\\metal\\metal91.jpg",
+        "label": "metal",
+        "same_as": "data\\dataset-resized\\glass\\glass115.jpg",
+        "same_as_label": "glass"
+      },
+      {
+        "path": "data\\dataset-resized\\plastic\\plastic152.jpg",
+        "label": "plastic",
+        "same_as": "data\\dataset-resized\\glass\\glass176.jpg",
+        "same_as_label": "glass"
+      },
+      {
+        "path": "data\\dataset-resized\\plastic\\plastic332.jpg",
+        "label": "plastic",
+        "same_as": "data\\dataset-resized\\glass\\glass389.jpg",
+        "same_as_label": "glass"
+      }
+    ],
+    "duplicate_scope": "SHA256 trên pixels RGB gốc đã giải mã, không kiểm tra gần trùng"
+  },
+  "near_duplicate_split_audit": {
+    "method": "dHash 64-bit + 32x32 RGB pixel MAE; advisory cross-split only",
+    "hamming_threshold": 3,
+    "pixel_mae_threshold": 0.035,
+    "candidate_pairs": 6,
+    "same_class_candidate_pairs": 6,
+    "cross_class_candidate_pairs": 0,
+    "examples_truncated": false,
+    "warning": "Similarity candidates are NOT confirmed duplicate objects; inspect originals manually. This step never uses labels to train or select the model."
+  },
+  "environment": {
+    "python": "3.14.0",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "scikit_image": "0.26.0",
+    "pillow": "12.3.0"
+  },
+  "split": {
+    "type": "stratified 80:20 holdout AFTER exact dedup",
+    "random_state": 2026,
+    "n_train": 2016,
+    "n_validation": 505,
+    "train_class_counts": {
+      "plastic": 384,
+      "paper": 475,
+      "cardboard": 322,
+      "trash": 110,
+      "glass": 398,
+      "metal": 327
+    },
+    "validation_class_counts": {
+      "plastic": 96,
+      "paper": 119,
+      "cardboard": 81,
+      "metal": 82,
+      "trash": 27,
+      "glass": 100
+    }
+  },
+  "baseline_definition": "HOG 64x64 + RGB hist(8 x3) + StandardScaler + balanced LogisticRegression max_iter=1200",
+  "improvement_definition": "Baseline descriptor + HSV hist + spatial RGB + LBP + color moments + RBF SVM, train-only CV selection of C/gamma, train-only sigmoid calibration",
+  "baseline": {
+    "accuracy": 0.5801980198019802,
+    "macro_f1": 0.5483030068315935,
+    "macro_precision": 0.5502697659324166,
+    "macro_recall": 0.5471021803783241,
+    "classification_report": {
+      "cardboard": {
+        "precision": 0.5662650602409639,
+        "recall": 0.5802469135802469,
+        "f1-score": 0.573170731707317,
+        "support": 81.0
+      },
+      "glass": {
+        "precision": 0.5353535353535354,
+        "recall": 0.53,
+        "f1-score": 0.5326633165829145,
+        "support": 100.0
+      },
+      "metal": {
+        "precision": 0.5125,
+        "recall": 0.5,
+        "f1-score": 0.5061728395061729,
+        "support": 82.0
+      },
+      "paper": {
+        "precision": 0.6875,
+        "recall": 0.7394957983193278,
+        "f1-score": 0.7125506072874493,
+        "support": 119.0
+      },
+      "plastic": {
+        "precision": 0.6,
+        "recall": 0.5625,
+        "f1-score": 0.5806451612903226,
+        "support": 96.0
+      },
+      "trash": {
+        "precision": 0.4,
+        "recall": 0.37037037037037035,
+        "f1-score": 0.38461538461538464,
+        "support": 27.0
+      },
+      "accuracy": 0.5801980198019802,
+      "macro avg": {
+        "precision": 0.5502697659324166,
+        "recall": 0.5471021803783241,
+        "f1-score": 0.5483030068315935,
+        "support": 505.0
+      },
+      "weighted avg": {
+        "precision": 0.5775055909205379,
+        "recall": 0.5801980198019802,
+        "f1-score": 0.5784542710926398,
+        "support": 505.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        47,
+        7,
+        2,
+        14,
+        7,
+        4
+      ],
+      [
+        5,
+        53,
+        11,
+        8,
+        18,
+        5
+      ],
+      [
+        6,
+        19,
+        41,
+        9,
+        4,
+        3
+      ],
+      [
+        14,
+        5,
+        6,
+        88,
+        6,
+        0
+      ],
+      [
+        6,
+        9,
+        17,
+        7,
+        54,
+        3
+      ],
+      [
+        5,
+        6,
+        3,
+        2,
+        1,
+        10
+      ]
+    ],
+    "probability_diagnostics": {
+      "multiclass_brier": 0.6785143354374054,
+      "ece_10bins": 0.28932208424747574,
+      "reliability_bins": [
+        {
+          "range": [
+            0.3,
+            0.4
+          ],
+          "n": 5,
+          "accuracy": 0.2,
+          "mean_confidence": 0.3791050374507904
+        },
+        {
+          "range": [
+            0.4,
+            0.5
+          ],
+          "n": 14,
+          "accuracy": 0.2857142857142857,
+          "mean_confidence": 0.46880084914820536
+        },
+        {
+          "range": [
+            0.5,
+            0.6
+          ],
+          "n": 37,
+          "accuracy": 0.32432432432432434,
+          "mean_confidence": 0.5553171167502532
+        },
+        {
+          "range": [
+            0.6,
+            0.7
+          ],
+          "n": 38,
+          "accuracy": 0.5,
+          "mean_confidence": 0.6534967485227083
+        },
+        {
+          "range": [
+            0.7,
+            0.8
+          ],
+          "n": 43,
+          "accuracy": 0.4186046511627907,
+          "mean_confidence": 0.7491898259451223
+        },
+        {
+          "range": [
+            0.8,
+            0.9
+          ],
+          "n": 63,
+          "accuracy": 0.3968253968253968,
+          "mean_confidence": 0.8496355140019977
+        },
+        {
+          "range": [
+            0.9,
+            1.0
+          ],
+          "n": 305,
+          "accuracy": 0.7016393442622951,
+          "mean_confidence": 0.9820560846172395
+        }
+      ],
+      "note": "ECE/Brier tính trên validation; không bảo đảm xác suất đúng cho ảnh thực địa"
+    }
+  },
+  "improved": {
+    "accuracy": 0.7405940594059406,
+    "macro_f1": 0.7206119283605,
+    "macro_precision": 0.7448609988741915,
+    "macro_recall": 0.7081274054337182,
+    "classification_report": {
+      "cardboard": {
+        "precision": 0.7674418604651163,
+        "recall": 0.8148148148148148,
+        "f1-score": 0.7904191616766467,
+        "support": 81.0
+      },
+      "glass": {
+        "precision": 0.6767676767676768,
+        "recall": 0.67,
+        "f1-score": 0.6733668341708543,
+        "support": 100.0
+      },
+      "metal": {
+        "precision": 0.7681159420289855,
+        "recall": 0.6463414634146342,
+        "f1-score": 0.7019867549668874,
+        "support": 82.0
+      },
+      "paper": {
+        "precision": 0.7851851851851852,
+        "recall": 0.8907563025210085,
+        "f1-score": 0.8346456692913385,
+        "support": 119.0
+      },
+      "plastic": {
+        "precision": 0.6938775510204082,
+        "recall": 0.7083333333333334,
+        "f1-score": 0.7010309278350515,
+        "support": 96.0
+      },
+      "trash": {
+        "precision": 0.7777777777777778,
+        "recall": 0.5185185185185185,
+        "f1-score": 0.6222222222222222,
+        "support": 27.0
+      },
+      "accuracy": 0.7405940594059406,
+      "macro avg": {
+        "precision": 0.7448609988741915,
+        "recall": 0.7081274054337182,
+        "f1-score": 0.7206119283605,
+        "support": 505.0
+      },
+      "weighted avg": {
+        "precision": 0.7403452426847824,
+        "recall": 0.7405940594059406,
+        "f1-score": 0.737317530966362,
+        "support": 505.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        66,
+        4,
+        1,
+        7,
+        3,
+        0
+      ],
+      [
+        3,
+        67,
+        6,
+        4,
+        17,
+        3
+      ],
+      [
+        1,
+        15,
+        53,
+        8,
+        4,
+        1
+      ],
+      [
+        7,
+        2,
+        1,
+        106,
+        3,
+        0
+      ],
+      [
+        6,
+        8,
+        7,
+        7,
+        68,
+        0
+      ],
+      [
+        3,
+        3,
+        1,
+        3,
+        3,
+        14
+      ]
+    ],
+    "probability_diagnostics": {
+      "multiclass_brier": 0.43877400559829033,
+      "ece_10bins": 0.15759946425198978,
+      "reliability_bins": [
+        {
+          "range": [
+            0.2,
+            0.3
+          ],
+          "n": 1,
+          "accuracy": 0.0,
+          "mean_confidence": 0.2916791758308634
+        },
+        {
+          "range": [
+            0.3,
+            0.4
+          ],
+          "n": 8,
+          "accuracy": 0.75,
+          "mean_confidence": 0.3683624300383488
+        },
+        {
+          "range": [
+            0.4,
+            0.5
+          ],
+          "n": 68,
+          "accuracy": 0.4117647058823529,
+          "mean_confidence": 0.4589366591527068
+        },
+        {
+          "range": [
+            0.5,
+            0.6
+          ],
+          "n": 132,
+          "accuracy": 0.6818181818181818,
+          "mean_confidence": 0.5587372141448467
+        },
+        {
+          "range": [
+            0.6,
+            0.7
+          ],
+          "n": 281,
+          "accuracy": 0.8469750889679716,
+          "mean_confidence": 0.6493477109791215
+        },
+        {
+          "range": [
+            0.7,
+            0.8
+          ],
+          "n": 15,
+          "accuracy": 0.8,
+          "mean_confidence": 0.7163149372266951
+        }
+      ],
+      "note": "ECE/Brier tính trên validation; không bảo đảm xác suất đúng cho ảnh thực địa"
+    }
+  },
+  "hyperparameter_search_train_only": {
+    "method": "3-fold Stratified CV train-only",
+    "candidate_C": [
+      0.5,
+      2.0,
+      8.0,
+      20.0
+    ],
+    "candidate_gamma": [
+      "scale",
+      0.001,
+      0.01
+    ],
+    "best_C": 8.0,
+    "best_gamma": "scale",
+    "best_cv_macro_f1": 0.6789620974164031,
+    "all_candidate_results": [
+      {
+        "C": 0.5,
+        "gamma": "scale",
+        "mean_macro_f1": 0.6439112432379623,
+        "std_macro_f1": 0.0052649588693732844
+      },
+      {
+        "C": 0.5,
+        "gamma": 0.001,
+        "mean_macro_f1": 0.543776211431838,
+        "std_macro_f1": 0.018793115570484766
+      },
+      {
+        "C": 0.5,
+        "gamma": 0.01,
+        "mean_macro_f1": 0.0578097280286318,
+        "std_macro_f1": 0.00798194471129439
+      },
+      {
+        "C": 2.0,
+        "gamma": "scale",
+        "mean_macro_f1": 0.6782409420938603,
+        "std_macro_f1": 0.02377274762769059
+      },
+      {
+        "C": 2.0,
+        "gamma": 0.001,
+        "mean_macro_f1": 0.6037390314563651,
+        "std_macro_f1": 0.009821596388899699
+      },
+      {
+        "C": 2.0,
+        "gamma": 0.01,
+        "mean_macro_f1": 0.0635620701820519,
+        "std_macro_f1": 0.00015309557748277363
+      },
+      {
+        "C": 8.0,
+        "gamma": "scale",
+        "mean_macro_f1": 0.6789620974164031,
+        "std_macro_f1": 0.023471866267304062
+      },
+      {
+        "C": 8.0,
+        "gamma": 0.001,
+        "mean_macro_f1": 0.6037000485777946,
+        "std_macro_f1": 0.009827113845086395
+      },
+      {
+        "C": 8.0,
+        "gamma": 0.01,
+        "mean_macro_f1": 0.0635620701820519,
+        "std_macro_f1": 0.00015309557748277363
+      },
+      {
+        "C": 20.0,
+        "gamma": "scale",
+        "mean_macro_f1": 0.6789620974164031,
+        "std_macro_f1": 0.023471866267304062
+      },
+      {
+        "C": 20.0,
+        "gamma": 0.001,
+        "mean_macro_f1": 0.6037000485777946,
+        "std_macro_f1": 0.009827113845086395
+      },
+      {
+        "C": 20.0,
+        "gamma": 0.01,
+        "mean_macro_f1": 0.0635620701820519,
+        "std_macro_f1": 0.00015309557748277363
+      }
+    ]
+  },
+  "bootstrap": {
+    "method": "Paired bootstrap on one held-out validation set; exploratory, not external test",
+    "n_resamples": 800,
+    "baseline_macro_f1_ci95": [
+      0.4959909643696577,
+      0.5953995746376686
+    ],
+    "improved_macro_f1_ci95": [
+      0.6720745669357175,
+      0.7629144510489148
+    ],
+    "difference_macro_f1_ci95": [
+      0.12357282787977344,
+      0.22307023387364297
+    ],
+    "difference_ci_excludes_zero": true
+  },
+  "comparison": {
+    "delta_macro_f1": 0.17230892152890653,
+    "delta_accuracy": 0.16039603960396043,
+    "improved_beats_baseline_on_validation": true,
+    "most_confused_pair_baseline": {
+      "label_a": "glass",
+      "label_b": "metal",
+      "baseline_n": 30,
+      "improved_n": 21
+    },
+    "pairwise_error_reductions": [
+      {
+        "label_a": "cardboard",
+        "label_b": "paper",
+        "baseline_errors": 28,
+        "improved_errors": 14,
+        "errors_reduced": 14
+      },
+      {
+        "label_a": "metal",
+        "label_b": "plastic",
+        "baseline_errors": 21,
+        "improved_errors": 11,
+        "errors_reduced": 10
+      },
+      {
+        "label_a": "glass",
+        "label_b": "metal",
+        "baseline_errors": 30,
+        "improved_errors": 21,
+        "errors_reduced": 9
+      },
+      {
+        "label_a": "glass",
+        "label_b": "paper",
+        "baseline_errors": 13,
+        "improved_errors": 6,
+        "errors_reduced": 7
+      },
+      {
+        "label_a": "metal",
+        "label_b": "paper",
+        "baseline_errors": 15,
+        "improved_errors": 9,
+        "errors_reduced": 6
+      },
+      {
+        "label_a": "cardboard",
+        "label_b": "trash",
+        "baseline_errors": 9,
+        "improved_errors": 3,
+        "errors_reduced": 6
+      },
+      {
+        "label_a": "cardboard",
+        "label_b": "metal",
+        "baseline_errors": 8,
+        "improved_errors": 2,
+        "errors_reduced": 6
+      },
+      {
+        "label_a": "cardboard",
+        "label_b": "glass",
+        "baseline_errors": 12,
+        "improved_errors": 7,
+        "errors_reduced": 5
+      },
+      {
+        "label_a": "glass",
+        "label_b": "trash",
+        "baseline_errors": 11,
+        "improved_errors": 6,
+        "errors_reduced": 5
+      },
+      {
+        "label_a": "cardboard",
+        "label_b": "plastic",
+        "baseline_errors": 13,
+        "improved_errors": 9,
+        "errors_reduced": 4
+      },
+      {
+        "label_a": "metal",
+        "label_b": "trash",
+        "baseline_errors": 6,
+        "improved_errors": 2,
+        "errors_reduced": 4
+      },
+      {
+        "label_a": "paper",
+        "label_b": "plastic",
+        "baseline_errors": 13,
+        "improved_errors": 10,
+        "errors_reduced": 3
+      },
+      {
+        "label_a": "glass",
+        "label_b": "plastic",
+        "baseline_errors": 27,
+        "improved_errors": 25,
+        "errors_reduced": 2
+      },
+      {
+        "label_a": "plastic",
+        "label_b": "trash",
+        "baseline_errors": 4,
+        "improved_errors": 3,
+        "errors_reduced": 1
+      },
+      {
+        "label_a": "paper",
+        "label_b": "trash",
+        "baseline_errors": 2,
+        "improved_errors": 3,
+        "errors_reduced": -1
+      }
+    ],
+    "n_pairs_with_fewer_errors": 14
+  },
+  "limitations": [
+    "Không đánh giá trên bộ ảnh ngoài phạm vi TrashNet.",
+    "Chưa kiểm tra ảnh gần trùng do chụp liên tiếp; chỉ phát hiện bản trùng pixel tuyệt đối.",
+    "SVM sigmoid calibration là xác suất ước lượng, không đảm bảo đúng trong mọi bối cảnh."
+  ],
+  "runtime_seconds": 149.48913589998847,
+  "experimental_mode": "ACTUAL_DATA_IF_INPUT_IS_ORIGINAL_TRASHNET"
+}

@@ -1,0 +1,4 @@
+type,file_1,file_2_or_error
+invalid,data/dataset-resized\metal\metal91.jpg,Xung đột nhãn: data/dataset-resized\glass\glass115.jpg
+invalid,data/dataset-resized\plastic\plastic152.jpg,Xung đột nhãn: data/dataset-resized\glass\glass176.jpg
+invalid,data/dataset-resized\plastic\plastic332.jpg,Xung đột nhãn: data/dataset-resized\glass\glass389.jpg

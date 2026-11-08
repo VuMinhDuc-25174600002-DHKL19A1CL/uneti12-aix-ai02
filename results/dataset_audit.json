@@ -1,0 +1,46 @@
+{
+  "n_input": 2527,
+  "n_after_cleanup": 2521,
+  "by_class_original": {
+    "cardboard": 403,
+    "glass": 501,
+    "metal": 410,
+    "paper": 594,
+    "plastic": 482,
+    "trash": 137
+  },
+  "by_class_used": {
+    "cardboard": 403,
+    "glass": 498,
+    "metal": 409,
+    "paper": 594,
+    "plastic": 480,
+    "trash": 137
+  },
+  "n_invalid": 0,
+  "n_exact_duplicate_same_label": 0,
+  "n_conflicting_duplicate": 3,
+  "invalid": [],
+  "same_label_duplicates": [],
+  "label_conflicts": [
+    {
+      "path": "data\\dataset-resized\\metal\\metal91.jpg",
+      "label": "metal",
+      "same_as": "data\\dataset-resized\\glass\\glass115.jpg",
+      "same_as_label": "glass"
+    },
+    {
+      "path": "data\\dataset-resized\\plastic\\plastic152.jpg",
+      "label": "plastic",
+      "same_as": "data\\dataset-resized\\glass\\glass176.jpg",
+      "same_as_label": "glass"
+    },
+    {
+      "path": "data\\dataset-resized\\plastic\\plastic332.jpg",
+      "label": "plastic",
+      "same_as": "data\\dataset-resized\\glass\\glass389.jpg",
+      "same_as_label": "glass"
+    }
+  ],
+  "duplicate_scope": "SHA256 trên pixels RGB gốc đã giải mã, không kiểm tra gần trùng"
+}

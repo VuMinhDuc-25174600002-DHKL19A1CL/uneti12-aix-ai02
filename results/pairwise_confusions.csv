@@ -1,0 +1,16 @@
+﻿label_a,label_b,baseline_errors,improved_errors,errors_reduced
+cardboard,paper,28,14,14
+metal,plastic,21,11,10
+glass,metal,30,21,9
+glass,paper,13,6,7
+metal,paper,15,9,6
+cardboard,trash,9,3,6
+cardboard,metal,8,2,6
+cardboard,glass,12,7,5
+glass,trash,11,6,5
+cardboard,plastic,13,9,4
+metal,trash,6,2,4
+paper,plastic,13,10,3
+glass,plastic,27,25,2
+plastic,trash,4,3,1
+paper,trash,2,3,-1

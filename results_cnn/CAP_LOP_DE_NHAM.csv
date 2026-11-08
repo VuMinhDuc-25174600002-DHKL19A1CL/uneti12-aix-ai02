@@ -1,0 +1,16 @@
+﻿class_a,class_b,baseline_errors,svm_v4_errors,cnn_v5_errors,errors_reduced_vs_baseline
+glass,metal,30,21,7,23
+metal,plastic,21,11,1,20
+cardboard,paper,28,14,13,15
+cardboard,plastic,13,9,0,13
+metal,paper,15,9,2,13
+cardboard,glass,12,7,0,12
+glass,paper,13,6,1,12
+glass,plastic,27,25,15,12
+glass,trash,11,6,0,11
+paper,plastic,13,10,5,8
+cardboard,metal,8,2,1,7
+cardboard,trash,9,3,4,5
+metal,trash,6,2,3,3
+plastic,trash,4,3,1,3
+paper,trash,2,3,7,-5

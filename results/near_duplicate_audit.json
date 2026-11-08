@@ -1,0 +1,60 @@
+{
+  "method": "dHash 64-bit + 32x32 RGB pixel MAE; advisory cross-split only",
+  "hamming_threshold": 3,
+  "pixel_mae_threshold": 0.035,
+  "candidate_pairs": 6,
+  "same_class_candidate_pairs": 6,
+  "cross_class_candidate_pairs": 0,
+  "examples_truncated": false,
+  "examples": [
+    {
+      "train_path": "data\\dataset-resized\\glass\\glass5.jpg",
+      "validation_path": "data\\dataset-resized\\glass\\glass188.jpg",
+      "train_label": "glass",
+      "validation_label": "glass",
+      "hamming_distance": 3,
+      "pixel_mae": 0.031421
+    },
+    {
+      "train_path": "data\\dataset-resized\\glass\\glass5.jpg",
+      "validation_path": "data\\dataset-resized\\glass\\glass15.jpg",
+      "train_label": "glass",
+      "validation_label": "glass",
+      "hamming_distance": 3,
+      "pixel_mae": 0.031357
+    },
+    {
+      "train_path": "data\\dataset-resized\\paper\\paper477.jpg",
+      "validation_path": "data\\dataset-resized\\paper\\paper204.jpg",
+      "train_label": "paper",
+      "validation_label": "paper",
+      "hamming_distance": 2,
+      "pixel_mae": 0.030714
+    },
+    {
+      "train_path": "data\\dataset-resized\\glass\\glass3.jpg",
+      "validation_path": "data\\dataset-resized\\glass\\glass183.jpg",
+      "train_label": "glass",
+      "validation_label": "glass",
+      "hamming_distance": 2,
+      "pixel_mae": 0.023584
+    },
+    {
+      "train_path": "data\\dataset-resized\\glass\\glass3.jpg",
+      "validation_path": "data\\dataset-resized\\glass\\glass15.jpg",
+      "train_label": "glass",
+      "validation_label": "glass",
+      "hamming_distance": 2,
+      "pixel_mae": 0.016118
+    },
+    {
+      "train_path": "data\\dataset-resized\\glass\\glass4.jpg",
+      "validation_path": "data\\dataset-resized\\glass\\glass15.jpg",
+      "train_label": "glass",
+      "validation_label": "glass",
+      "hamming_distance": 3,
+      "pixel_mae": 0.031037
+    }
+  ],
+  "warning": "Similarity candidates are NOT confirmed duplicate objects; inspect originals manually. This step never uses labels to train or select the model."
+}

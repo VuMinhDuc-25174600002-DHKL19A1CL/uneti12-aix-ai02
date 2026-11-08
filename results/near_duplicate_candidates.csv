@@ -1,0 +1,7 @@
+﻿train_path,validation_path,train_label,validation_label,hamming_distance,pixel_mae
+data\dataset-resized\glass\glass5.jpg,data\dataset-resized\glass\glass188.jpg,glass,glass,3,0.031421
+data\dataset-resized\glass\glass5.jpg,data\dataset-resized\glass\glass15.jpg,glass,glass,3,0.031357
+data\dataset-resized\paper\paper477.jpg,data\dataset-resized\paper\paper204.jpg,paper,paper,2,0.030714
+data\dataset-resized\glass\glass3.jpg,data\dataset-resized\glass\glass183.jpg,glass,glass,2,0.023584
+data\dataset-resized\glass\glass3.jpg,data\dataset-resized\glass\glass15.jpg,glass,glass,2,0.016118
+data\dataset-resized\glass\glass4.jpg,data\dataset-resized\glass\glass15.jpg,glass,glass,3,0.031037
